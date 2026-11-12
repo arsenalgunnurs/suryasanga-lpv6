@@ -1,0 +1,111 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>04 学びの道のり 切り出しモック</title>
+<style>
+:root{--ink:#2f3533;--sub:#5f6763;--green:#3d6b5c;--deep:#2f5d4e;--rule:#ddd3c2;--cream:#fbf6ee}
+*{box-sizing:border-box}
+body{margin:0;background:#cfc8bc;color:var(--ink);font-family:"Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;font-size:17px;line-height:1.9;letter-spacing:.02em}
+.app{max-width:400px;margin:0 auto;background:var(--cream);min-height:100vh;box-shadow:0 0 40px rgba(0,0,0,.18)}
+.mocknote{background:#3a3f3d;color:#fff;font-size:12px;line-height:1.6;padding:10px 16px}
+.mocknote b{color:#f1d58a}
+.sec{padding:0 22px 48px}
+.stitle{margin:0 -22px 22px;padding:20px 22px 22px;text-align:center;background:var(--green);position:relative}
+.stitle span{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-weight:600;font-size:21px;color:#fff;letter-spacing:.04em}
+.stitle small{display:block;font-size:11px;letter-spacing:.2em;color:#cfe0d6}
+.stitle::after{content:"";position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:36px;height:2px;background:#e7c777;border-radius:2px}
+svg{display:block;width:100%;height:auto}
+.stp{transition:opacity .25s}
+.stair.focus .stp{opacity:.28}
+.stair.focus .stp.on{opacity:1}
+.cap{font-size:14px;color:var(--sub);line-height:1.75;margin:12px 0 0;background:#fff6dc;border:1.5px solid #e7c777;border-radius:12px;padding:10px 13px}
+.cap b{color:#7a5a33}
+.lead{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-weight:600;text-align:center;font-size:18px;line-height:1.6;margin:30px 0 4px}
+.leadsub{text-align:center;font-size:13.5px;color:var(--sub);margin:0 0 14px}
+.acc{background:#fff;border-radius:14px;margin:0 0 10px;border-left:7px solid var(--ac);box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.ah{display:grid;grid-template-columns:1fr 30px;gap:2px 8px;width:100%;text-align:left;background:none;border:0;padding:12px 12px 13px 14px;cursor:pointer;color:var(--ink);font:inherit}
+.tag{grid-column:1;font-size:11.5px;font-weight:700;color:var(--ac);line-height:1.4}
+.tag small{font-size:10.5px;margin-left:6px;background:var(--fill);color:var(--ink);border-radius:999px;padding:0 7px;font-weight:600}
+.q{grid-column:1;font-weight:700;font-size:16px;line-height:1.55}
+.pm{grid-column:2;grid-row:1/3;align-self:center;width:28px;height:28px;border-radius:50%;background:var(--ac);position:relative}
+.pm::before,.pm::after{content:"";position:absolute;left:8px;top:13px;width:12px;height:2px;background:#fff;border-radius:2px;transition:transform .2s}
+.pm::after{transform:rotate(90deg)}
+.acc.open .pm::after{transform:rotate(0)}
+.ab{display:none;padding:0 14px 14px;font-size:14.5px;line-height:1.8}
+.acc.open .ab{display:block}
+.ab p{margin:0 0 .7em}
+.rec{background:var(--fill);border-radius:10px;padding:8px 10px;margin:0 0 10px;font-size:12.5px}
+.rec b{display:block;font-size:12px;color:var(--ink);margin-bottom:4px}
+.chip{display:inline-block;background:#fff;border:1.5px solid;border-radius:999px;padding:0 10px;margin:0 6px 4px 0;font-weight:700;font-size:12.5px;line-height:1.8}
+.tofree{display:block;font-size:13.5px;font-weight:700;color:var(--deep);text-decoration:none;border-top:1px dashed var(--rule);padding-top:8px}
+.ctawrap{margin:22px 0 0;text-align:center}
+.ctanote{font-size:13.5px;color:var(--sub);margin:0 0 8px}
+.ctanote::before,.ctanote::after{content:"＼";margin:0 6px;color:var(--green)}
+.ctanote::after{content:"／"}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--deep);color:#fff;text-decoration:none;border-radius:16px;padding:17px 14px;font-weight:700;font-size:17.5px;line-height:1.4;box-shadow:0 4px 0 #1d3f34;animation:poko 2.6s ease-in-out infinite}
+.cta .ico{width:26px;height:26px;flex:0 0 26px}
+@keyframes poko{0%,70%,100%{transform:translateY(0)}78%{transform:translateY(-4px)}86%{transform:translateY(0)}92%{transform:translateY(-2px)}}
+@media (prefers-reduced-motion:reduce){.cta{animation:none}}
+.memo{background:#ece7dd;padding:22px 20px 30px;font-size:13.5px;line-height:1.75;color:var(--ink)}
+.memo h3{font-size:14.5px;margin:0 0 8px;font-family:inherit}
+.memo table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;margin:0 0 16px;font-size:12.5px}
+.memo td,.memo th{border-bottom:1px solid #e3dccf;padding:6px 8px;text-align:left;vertical-align:top}
+.memo th{background:#f5f1e9;font-weight:700;white-space:nowrap}
+.memo ul{margin:0;padding-left:1.2em}
+</style></head><body><div class="app">
+<div class="mocknote">【切り出しモック】<b>04 学びの道のり</b>だけを抜き出したものです（11/13 原田先生のイメージを反映した たたき台）。色・アイコン・一部の文言は仮です。</div>
+<section class="sec" id="s04">
+  <div class="stitle"><small>学びの道のり</small><span>Learning Journey</span></div>
+  <div class="stair" id="stair"><svg viewBox="0 0 340 286" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="学びの階段">
+<rect width="340" height="286" rx="14" fill="#f7f3ea"/>
+<line x1="0" y1="280" x2="340" y2="280" stroke="#d9cfbd" stroke-width="2"/>
+<g class="stp" data-g="1"><rect x="6" y="188" width="58" height="92" fill="#f3e3b0" stroke="#fff" stroke-width="2"/><rect x="14.0" y="194" width="42" height="14" rx="7" fill="#a8742a"/><text x="35.0" y="204.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fff">STEP1</text><text x="35.0" y="224" text-anchor="middle" font-size="13" font-weight="700" fill="#a8742a">知る</text><text x="35.0" y="240" text-anchor="middle" font-size="9.4" fill="#2f3533">はじめての</text><text x="35.0" y="252.5" text-anchor="middle" font-size="9.4" fill="#2f3533">インド哲学</text><text x="35.0" y="265.0" text-anchor="middle" font-size="9.4" fill="#2f3533">無料導入講座</text></g><g class="stp" data-g="1"><rect x="64" y="164" width="58" height="116" fill="#f3e3b0" stroke="#fff" stroke-width="2"/><rect x="72.0" y="170" width="42" height="14" rx="7" fill="#a8742a"/><text x="93.0" y="180.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fff">STEP2</text><text x="93.0" y="200" text-anchor="middle" font-size="13" font-weight="700" fill="#a8742a">気づく</text><text x="93.0" y="216" text-anchor="middle" font-size="9.4" fill="#2f3533">はじめての</text><text x="93.0" y="228.5" text-anchor="middle" font-size="9.4" fill="#2f3533">インド哲学</text><text x="93.0" y="241.0" text-anchor="middle" font-size="9.4" fill="#2f3533">全4回</text></g><g class="stp" data-g="2"><rect x="122" y="140" width="58" height="140" fill="#bfdcc6" stroke="#fff" stroke-width="2"/><rect x="130.0" y="146" width="42" height="14" rx="7" fill="#3d6b5c"/><text x="151.0" y="156.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fff">STEP3</text><text x="151.0" y="176" text-anchor="middle" font-size="13" font-weight="700" fill="#3d6b5c">わかる</text><text x="151.0" y="192" text-anchor="middle" font-size="9.4" fill="#2f3533">ヨーガ</text><text x="151.0" y="204.5" text-anchor="middle" font-size="9.4" fill="#2f3533">スートラ</text><text x="151.0" y="217.0" text-anchor="middle" font-size="9.4" fill="#2f3533">初級講座</text></g><g class="stp" data-g="2"><rect x="216" y="116" width="58" height="164" fill="#bfdcc6" stroke="#fff" stroke-width="2"/><rect x="224.0" y="122" width="42" height="14" rx="7" fill="#3d6b5c"/><text x="245.0" y="132.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fff">STEP4</text><text x="245.0" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#3d6b5c">できる</text><text x="245.0" y="168" text-anchor="middle" font-size="9.4" fill="#2f3533">ヨーガ</text><text x="245.0" y="180.5" text-anchor="middle" font-size="9.4" fill="#2f3533">スートラ</text><text x="245.0" y="193.0" text-anchor="middle" font-size="9.4" fill="#2f3533">中級講座</text></g><g class="stp" data-g="3"><rect x="274" y="92" width="58" height="188" fill="#c9d3e6" stroke="#fff" stroke-width="2"/><rect x="282.0" y="98" width="42" height="14" rx="7" fill="#4b6a96"/><text x="303.0" y="108.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fff">STEP5</text><text x="303.0" y="128" text-anchor="middle" font-size="13" font-weight="700" fill="#4b6a96">深める・</text><text x="303.0" y="143" text-anchor="middle" font-size="13" font-weight="700" fill="#4b6a96">伝える</text><text x="303.0" y="159" text-anchor="middle" font-size="9.4" fill="#2f3533">ヨーガ</text><text x="303.0" y="171.5" text-anchor="middle" font-size="9.4" fill="#2f3533">スートラ</text><text x="303.0" y="184.0" text-anchor="middle" font-size="9.4" fill="#2f3533">上級講座</text></g>
+<g class="stp" data-g="2">
+<path d="M180,280 L180,140 L216,116 L216,280Z" fill="#eef4ef"/>
+<path d="M178,141 Q198,108 218,117" fill="none" stroke="#a8835a" stroke-width="6" stroke-linecap="round"/>
+<path d="M184,133 v10 M193,124 v10 M202,121 v10 M211,121 v10" stroke="#a8835a" stroke-width="2"/>
+<path d="M198,86 V108" stroke="#c9a85d" stroke-width="1.5" stroke-dasharray="3 3"/>
+<rect x="134" y="58" width="128" height="28" rx="14" fill="#fff" stroke="#c9a85d" stroke-width="1.5"/>
+<text x="198" y="76.5" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7a5a33">日常で試す・振り返る</text>
+</g>
+<g class="first">
+<rect x="4" y="104" width="128" height="30" rx="15" fill="#fff" stroke="#a8742a" stroke-width="1.8"/>
+<text x="68" y="123.5" text-anchor="middle" font-size="11.5" font-weight="700" fill="#a8742a">最初の一歩はこちら</text>
+<path d="M35,135 V178" stroke="#a8742a" stroke-width="3" stroke-linecap="round"/>
+<path d="M27,170 L35,182 L43,170" fill="none" stroke="#a8742a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg></div>
+  <p class="cap"><b>「わかる」と「できる」のあいだの橋＝日常で試す・振り返る</b><br>頭でわかったことを日常で生かすには、練習が必要です。SURYAでは、その練習を講座でサポートします。</p>
+
+  <p class="lead">あなたに合う学び方は？</p>
+  <p class="leadsub">気になる項目の「＋」を押してください</p>
+  <div class="acc" data-g="1" style="--ac:#a8742a;--fill:#f3e3b0">
+  <button class="ah" aria-expanded="false"><span class="tag">階段の 知る・気づく<small>STEP1・2</small></span><span class="q">同じことを、何度も考えてしまう</span><span class="pm" aria-hidden="true"></span></button>
+  <div class="ab"><div class="rec"><b>おすすめの講座</b><span class="chip" style="border-color:#a8742a;color:#a8742a">無料導入講座</span><span class="chip" style="border-color:#a8742a;color:#a8742a">はじめてのインド哲学（全4回）</span></div><p>「あの一言、帰ってからも気になる」。そんな身近な出来事を通して、無料導入講座では自分の受け止め方を知ります。</p><p>全4回の「はじめてのインド哲学」では、自分の日常を振り返り、考え方のクセに気づく練習をします。</p><p>まずは、無料導入講座からご覧ください。</p><a class="tofree" href="#cta">▶ 最初の一歩は、無料導入講座から</a></div>
+</div>
+<div class="acc" data-g="2" style="--ac:#3d6b5c;--fill:#bfdcc6">
+  <button class="ah" aria-expanded="false"><span class="tag">階段の わかる・できる<small>STEP3・4</small></span><span class="q">周りに合わせがち。自分で選べるようになりたい</span><span class="pm" aria-hidden="true"></span></button>
+  <div class="ab"><div class="rec"><b>おすすめの講座</b><span class="chip" style="border-color:#3d6b5c;color:#3d6b5c">ヨーガスートラ初級講座</span><span class="chip" style="border-color:#3d6b5c;color:#3d6b5c">ヨーガスートラ中級講座</span></div><p>ヨーガスートラ初級では、なぜ同じところでつまずくのかを、心の働きから学びます。</p><p>中級では、気持ちが動いたときに、次の行動を自分で選ぶ練習をします。</p><p>講座でお渡しするChatGPT用の質問を使い、心が動いた日常の出来事をご自身で振り返ります。</p><p>学びの入口は、無料導入講座です。まずはそちらからご覧ください。</p><a class="tofree" href="#cta">▶ 最初の一歩は、無料導入講座から</a></div>
+</div>
+<div class="acc" data-g="3" style="--ac:#4b6a96;--fill:#c9d3e6">
+  <button class="ah" aria-expanded="false"><span class="tag">階段の 深める・伝える<small>STEP5</small></span><span class="q">もっと深く学びたい。教えることにも生かしたい</span><span class="pm" aria-hidden="true"></span></button>
+  <div class="ab"><div class="rec"><b>おすすめの講座</b><span class="chip" style="border-color:#4b6a96;color:#4b6a96">ヨーガスートラ上級講座</span></div><p>ヨーガスートラ上級は、初級・中級に続く講座です。古典の教えへの理解を深め、自分の言葉でわかりやすく伝える練習をします。</p><p>学びを深めたい方や、ヨーガ・瞑想の指導に生かしたい方に向けた講座です。</p><a class="tofree" href="#cta">▶ 最初の一歩は、無料導入講座から</a></div>
+</div>
+
+  <div class="ctawrap" id="cta">
+    <p class="ctanote">60分の録画を、好きな時間に見られます</p>
+    <a class="cta" href="#cta"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9l-.6 2.6c-.1.4.3.7.7.5l3.6-2.9C19.2 18.6 22 15.2 22 11c0-4.4-4.5-8-10-8z" fill="#fff"/></svg>LINEで無料講座を受け取る</a>
+  </div>
+</section>
+
+</div>
+<script>
+const accs=[...document.querySelectorAll('.acc')],stair=document.getElementById('stair');
+function paint(g){stair.classList.toggle('focus',!!g);stair.querySelectorAll('.stp').forEach(e=>e.classList.toggle('on',e.dataset.g===g));}
+accs.forEach(a=>a.querySelector('.ah').addEventListener('click',()=>{
+  const open=!a.classList.contains('open');
+  accs.forEach(b=>{b.classList.remove('open');b.querySelector('.ah').setAttribute('aria-expanded','false');});
+  if(open){a.classList.add('open');a.querySelector('.ah').setAttribute('aria-expanded','true');}
+  paint(open?a.dataset.g:null);
+}));
+document.querySelectorAll('.tofree').forEach(l=>l.addEventListener('click',e=>{e.preventDefault();document.getElementById('cta').scrollIntoView({behavior:'smooth',block:'center'});}));
+</script>
+</body></html>
