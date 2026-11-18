@@ -1,0 +1,150 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>学びの道のり 案1</title><style>
+:root{--ink:#2f3533;--sub:#5f6763;--green:#3d6b5c;--deep:#2f5d4e;--rule:#ddd3c2;--cream:#fbf6ee}
+*{box-sizing:border-box}
+body{margin:0;background:#cfc8bc;color:var(--ink);font-family:"Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;font-size:17px;line-height:1.9;letter-spacing:.02em}
+.app{max-width:400px;margin:0 auto;background:var(--cream);min-height:100vh;box-shadow:0 0 40px rgba(0,0,0,.18)}
+.mocknote{background:#3a3f3d;color:#fff;font-size:12px;line-height:1.6;padding:10px 16px}
+.mocknote b{color:#f1d58a}
+.sec{padding:0 22px 48px}
+.stitle{margin:0 -22px 22px;padding:20px 22px 22px;text-align:center;background:var(--green);position:relative}
+.stitle span{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-weight:600;font-size:21px;color:#fff;letter-spacing:.04em}
+.stitle small{display:block;font-size:11px;letter-spacing:.2em;color:#cfe0d6}
+.stitle::after{content:"";position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:36px;height:2px;background:#e7c777;border-radius:2px}
+svg{display:block;width:100%;height:auto}
+.stp{transition:opacity .25s}.stair.focus .stp{opacity:.28}.stair.focus .stp.on{opacity:1}
+.glow{animation:gl 2.4s ease-in-out infinite}@keyframes gl{50%{opacity:.25}}
+.cap{font-size:14px;color:var(--sub);line-height:1.75;margin:12px 0 0;background:#fff6dc;border:1.5px solid #e7c777;border-radius:12px;padding:10px 13px}
+.cap b{color:#7a5a33}
+.lead{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-weight:600;text-align:center;font-size:18px;line-height:1.6;margin:30px 0 4px}
+.leadsub{text-align:center;font-size:13.5px;color:var(--sub);margin:0 0 14px}
+.accs{border-top:1px solid var(--rule)}
+.acc{border-bottom:1px solid var(--rule)}
+.ah{display:grid;grid-template-columns:1fr 32px;gap:4px 12px;width:100%;text-align:left;background:none;border:0;padding:16px 2px 16px;cursor:pointer;color:var(--ink);font:inherit}
+.tag{grid-column:1;font-size:11.5px;font-weight:700;color:var(--ac);letter-spacing:.08em;line-height:1.4;display:flex;align-items:center;gap:6px}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--ac);display:block}
+.q{grid-column:1;font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-weight:600;font-size:17px;line-height:1.6}
+.pm{grid-column:2;grid-row:1/3;align-self:center;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--ac);position:relative}
+.pm::before,.pm::after{content:"";position:absolute;left:8px;top:13px;width:11px;height:1.5px;background:var(--ac);transition:transform .2s}
+.pm::after{transform:rotate(90deg)}.acc.open .pm::after{transform:rotate(0)}
+.ab{display:none;margin:0 0 16px;padding:14px 14px 12px;background:var(--tint);border-radius:4px;font-size:14.5px;line-height:1.8}.acc.open .ab{display:block}
+.ab p{margin:0 0 .7em}
+.pos{display:flex;align-items:center;gap:10px;background:#fff;border-radius:10px;padding:8px 10px;margin:0 0 10px;font-size:12.5px;line-height:1.5}
+.pos .mini{width:64px;flex:0 0 64px}
+.tofree{display:block;font-size:13.5px;font-weight:700;color:var(--ac);text-decoration:none;border-top:1px dashed var(--rule);padding-top:8px}
+.same{font-size:13.5px;background:#fff6dc;border-radius:10px;padding:8px 10px;margin:4px 0 0!important;color:#5a4526}
+.more{border-top:1px dashed var(--rule);padding-top:6px;margin:0 0 8px}
+.more summary{font-size:13px;color:var(--sub);cursor:pointer;list-style:none}
+.more summary::before{content:"▸ ";}.more[open] summary::before{content:"▾ "}
+.more ul{list-style:none;margin:6px 0 4px;padding:0;font-size:12.5px}
+.more li{color:#a49d92;padding:2px 0;line-height:1.6}.more li i{font-style:normal;font-size:10px;font-weight:700;margin-right:6px;border:1px solid currentColor;border-radius:999px;padding:0 6px}
+.more li.on{color:var(--ink);font-weight:700}.more li.on i{color:#fff;background:var(--c);border-color:var(--c)}
+.mnote{font-size:12px;color:var(--sub);margin:4px 0 0!important}
+.free{background:#fff;border:2px solid #a8742a;border-radius:16px;padding:16px 16px 14px;margin:22px 0 0;position:relative}
+.fk{position:absolute;top:-13px;left:14px;margin:0;background:#a8742a;color:#fff;font-size:12px;font-weight:700;border-radius:999px;padding:1px 12px}
+.ft{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:15px;line-height:1.5;margin:4px 0 8px}.ft b{font-size:21px;color:#7a5a33}
+.fmeta{display:flex;gap:6px;list-style:none;padding:0;margin:0 0 10px;flex-wrap:wrap}.fmeta li{font-size:12px;font-weight:700;background:#f6ecd4;color:#7a5a33;border-radius:999px;padding:0 10px}
+.fl{font-size:12.5px;font-weight:700;margin:0;color:var(--sub)}
+.free ol{margin:2px 0 8px;padding-left:1.3em;font-size:14px;line-height:1.7}
+.fn{font-size:12.5px;color:var(--sub);margin:0;border-top:1px dashed var(--rule);padding-top:6px}
+.mh{font-size:12px;font-weight:700;color:var(--sub);margin:4px 0 6px!important}
+.map ul,.ladder ul{list-style:none;margin:0 0 12px;padding:0}
+.map li{display:grid;grid-template-columns:auto 1fr;gap:0 8px;background:#fff;border-radius:4px;padding:8px 10px;margin:0 0 6px;align-items:center}
+.map .sn{grid-row:1/3;color:#fff;font-size:10.5px;font-weight:700;border-radius:3px;padding:2px 7px;align-self:center}
+.map .wd{font-size:11.5px;font-weight:700;line-height:1.3}
+.map .cn{font-weight:700;font-size:14px;line-height:1.4}.map .cn small{font-weight:400;font-size:11.5px;color:var(--sub);margin-left:6px}
+.ladder li{display:flex;align-items:center;gap:8px;font-size:12.5px;line-height:1.35;padding:6px 9px;margin:0 0 3px;background:#fff;color:#aaa49a;border-bottom:2px solid #e3ddd1}
+.ladder li b{font-size:10px;flex:0 0 auto}
+.ladder li.on{background:var(--c);color:#fff;border-color:rgba(0,0,0,.18);font-weight:700}
+.ladder li em{margin-left:auto;font-style:normal;font-size:10.5px;background:#fff;color:var(--c);border-radius:999px;padding:0 7px}
+.ctawrap{margin:22px 0 0;text-align:center}
+.ctanote{font-size:13.5px;color:var(--sub);margin:0 0 8px}
+.ctanote::before{content:"＼";margin:0 6px;color:var(--green)}.ctanote::after{content:"／";margin:0 6px;color:var(--green)}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--deep);color:#fff;text-decoration:none;border-radius:16px;padding:17px 14px;font-weight:700;font-size:17.5px;line-height:1.4;box-shadow:0 4px 0 #1d3f34;animation:poko 2.6s ease-in-out infinite}
+.cta .ico{width:26px;height:26px;flex:0 0 26px}
+@keyframes poko{0%,70%,100%{transform:translateY(0)}78%{transform:translateY(-4px)}86%{transform:translateY(0)}92%{transform:translateY(-2px)}}
+@media (prefers-reduced-motion:reduce){.cta,.glow{animation:none}}
+
+.free{text-align:center}.fk{left:50%!important;transform:translateX(-50%)}
+.fgrid{display:grid;grid-template-columns:78px 1fr;gap:12px;align-items:center;margin:4px 0 10px}
+.book svg{width:78px;filter:drop-shadow(2px 3px 3px rgba(0,0,0,.15))}
+.fbody .ft{margin:0 0 8px}.fbody .fmeta{justify-content:center;margin:0}
+.free ol{display:inline-block;text-align:left}
+.nayami{display:grid;grid-template-columns:30% 1fr;gap:4px;align-items:center;margin:0 0 6px}
+.who svg{width:100%}
+.bubbles{display:flex;flex-direction:column;gap:10px}
+.bb{position:relative;display:grid;grid-template-columns:1fr 26px;gap:8px;align-items:center;text-align:left;background:#fff;border:1.5px solid var(--ac);border-radius:16px;padding:10px 10px 10px 13px;cursor:pointer;font:inherit;color:var(--ink)}
+.bb::before{content:"";position:absolute;left:-9px;top:50%;margin-top:-7px;border:7px solid transparent;border-right:9px solid var(--ac);border-left:0}
+.bb::after{content:"";position:absolute;left:-6.5px;top:50%;margin-top:-5.5px;border:5.5px solid transparent;border-right:7px solid #fff;border-left:0}
+.bb.open{background:var(--tint)}.bb.open::after{border-right-color:var(--tint)}
+.bb .q{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-weight:600;font-size:14.5px;line-height:1.55}
+.bb .pm{grid-column:2;grid-row:auto;width:26px;height:26px}
+.bb .pm::before,.bb .pm::after{left:6.5px;top:11.5px;width:10px}
+.bb.open .pm::after{transform:rotate(0)}
+.pn{display:none;margin:12px 0 0;padding:14px 14px 12px;background:var(--tint);border-top:3px solid var(--ac);border-radius:4px;font-size:14.5px;line-height:1.8}
+.pn.open{display:block}.pn p{margin:0 0 .7em}
+.ph{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-weight:600;color:var(--ac);font-size:15px;line-height:1.6}
+.pos .mini{width:136px;flex:0 0 136px}.pos span{font-size:12px;line-height:1.55}
+</style></head><body><div class="app">
+<div class="mocknote">【学びの道のり <b>案1｜開くと「階段のどこか」が見える</b>】<br>悩みの吹き出しを押すと、下に解決の道すじと、階段のどこにあたるかが出ます。講座名は出しません。<br>※悩みの言葉3つは原田先生が見直し中のため、今の言葉のままです。女性の絵・本の絵は仮です。</div>
+<section class="sec" id="s04">
+<div class="stitle"><small>学びの道のり</small><span>Learning Journey</span></div>
+<div class="stair" id="stair"><svg viewBox="0 0 340 230" xmlns="http://www.w3.org/2000/svg">
+<rect width="340" height="230" rx="14" fill="#f7f3ea"/>
+<line x1="0" y1="222" x2="340" y2="222" stroke="#d9cfbd" stroke-width="2"/>
+<g class="stp" data-g="1"><rect x="6" y="150" width="58" height="72" fill="#f3e3b0" stroke="#fff" stroke-width="2"/><text x="35.0" y="169" text-anchor="middle" font-size="10" font-weight="700" fill="#a8742a">STEP1</text><text x="35.0" y="188" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2f3533">知る</text></g><g class="stp" data-g="1"><rect x="64" y="128" width="58" height="94" fill="#f3e3b0" stroke="#fff" stroke-width="2"/><text x="93.0" y="147" text-anchor="middle" font-size="10" font-weight="700" fill="#a8742a">STEP2</text><text x="93.0" y="166" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2f3533">気づく</text></g><g class="stp" data-g="2"><rect x="122" y="106" width="58" height="116" fill="#bfdcc6" stroke="#fff" stroke-width="2"/><text x="151.0" y="125" text-anchor="middle" font-size="10" font-weight="700" fill="#3d6b5c">STEP3</text><text x="151.0" y="144" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2f3533">わかる</text></g><g class="stp" data-g="2"><rect x="216" y="84" width="58" height="138" fill="#bfdcc6" stroke="#fff" stroke-width="2"/><text x="245.0" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="#3d6b5c">STEP4</text><text x="245.0" y="122" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2f3533">できる</text></g><g class="stp" data-g="3"><rect x="274" y="62" width="58" height="160" fill="#c9d3e6" stroke="#fff" stroke-width="2"/><text x="303.0" y="81" text-anchor="middle" font-size="10" font-weight="700" fill="#4b6a96">STEP5</text><text x="303.0" y="100" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2f3533">深める</text><text x="303.0" y="116" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2f3533">伝える</text></g><rect x="3" y="147" width="64" height="75" rx="4" fill="none" stroke="#e0a52b" stroke-width="3" class="glow"/><rect x="12" y="190" width="46" height="22" rx="11" fill="#a8742a"/><text x="35" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">無料</text>
+<g class="stp" data-g="2"><path d="M180,222 L180,106 L216,84 L216,222Z" fill="#eef4ef"/>
+<path d="M178,107 Q198,74 218,85" fill="none" stroke="#a8835a" stroke-width="6" stroke-linecap="round"/>
+<path d="M184,99 v10 M193,90 v10 M202,87 v10 M211,87 v10" stroke="#a8835a" stroke-width="2"/>
+<path d="M198,52 V74" stroke="#c9a85d" stroke-width="1.5" stroke-dasharray="3 3"/>
+<rect x="134" y="24" width="128" height="28" rx="14" fill="#fff" stroke="#c9a85d" stroke-width="1.5"/>
+<text x="198" y="42.5" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7a5a33">日常で試す・振り返る</text></g>
+<g><rect x="4" y="72" width="150" height="42" rx="12" fill="#a8742a"/>
+<text x="79" y="90" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">最初の一歩はこちら</text>
+<text x="79" y="106" text-anchor="middle" font-size="10" fill="#fff">無料導入講座（60分・録画）</text>
+<path d="M35,115 V142" stroke="#a8742a" stroke-width="3" stroke-linecap="round"/>
+<path d="M27,134 L35,146 L43,134" fill="none" stroke="#a8742a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg></div>
+<p class="cap"><b>「わかる」と「できる」のあいだの橋＝日常で試す・振り返る</b><br>頭でわかったことを日常で生かすには、練習が必要です。SURYAでは、その練習を講座でサポートします。</p>
+<div class="free">
+ <p class="fk">最初の一歩</p>
+ <div class="fgrid"><div class="book"><svg viewBox="0 0 90 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M14,14 L72,8 Q78,8 78,14 L80,94 Q80,100 74,100 L16,104 Z" fill="#e9dcc0"/>
+<path d="M10,16 L68,10 Q74,10 74,16 L76,96 Q76,102 70,102 L12,106 Q8,106 8,102 L6,20 Q6,16 10,16Z" fill="#7a2e2a"/>
+<path d="M14,22 L66,17 L68,92 L16,97 Z" fill="none" stroke="#d9b45a" stroke-width="1.4"/>
+<path d="M18,26 L62,22 L64,88 L20,92 Z" fill="none" stroke="#d9b45a" stroke-width=".7"/>
+<circle cx="41" cy="52" r="14" fill="none" stroke="#d9b45a" stroke-width="1.2"/>
+<text x="41" y="58" text-anchor="middle" font-size="17" fill="#e8c770" font-family="'Kohinoor Devanagari','Noto Sans Devanagari',serif">ॐ</text>
+<path d="M28,74 L54,72 M30,80 L52,78" stroke="#d9b45a" stroke-width="1.2" stroke-linecap="round"/>
+<path d="M6,20 Q4,60 8,102" stroke="#5e211e" stroke-width="3" fill="none"/>
+</svg></div>
+ <div class="fbody"><p class="ft">はじめてのインド哲学<br><b>無料導入講座</b></p>
+ <ul class="fmeta"><li>60分</li><li>録画で好きな時間に</li><li>無料</li></ul></div></div>
+ <p class="fl">講座で体験できること</p>
+ <ol><li>心の働き（仕組み）についての説明</li><li>今の自分の状態を確かめるチェックリスト</li><li>考えていること・感情を書き出すワーク</li></ol>
+ <p class="fn">この先には、初級から上級まで、一段ずつ進める講座があります。</p>
+</div>
+<p class="lead">あなたに合う学び方は？</p>
+<p class="leadsub">気になる悩みを押してください</p>
+<div class="nayami"><div class="who"><svg viewBox="0 0 110 190" xmlns="http://www.w3.org/2000/svg" aria-label="悩んでいる女性">
+<path d="M14,190 Q12,138 34,124 Q55,114 76,124 Q98,138 96,190Z" fill="#8fb0a6"/>
+<path d="M42,124 Q55,140 68,124 Q55,119 42,124Z" fill="#6f9389"/>
+<rect x="48" y="104" width="14" height="20" rx="6" fill="#f1c7a5"/>
+<path d="M30,70 Q28,34 55,32 Q84,32 82,70 Q84,104 70,112 L40,112 Q26,100 30,70Z" fill="#4a3328"/>
+<ellipse cx="55" cy="76" rx="21" ry="25" fill="#f1c7a5"/>
+<path d="M33,70 Q34,44 56,45 Q76,46 78,68 Q66,56 50,58 Q40,60 33,70Z" fill="#4a3328"/>
+<path d="M42,72 q4.5,2.5 9,0 M60,72 q4.5,2.5 9,0" stroke="#5a4033" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+<path d="M41,67 l9,-3 M70,67 l-9,-3" stroke="#5a4033" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M51,91 q2,-2 4,0 q2,2 4,0" stroke="#b5655a" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+<g fill="none" stroke="#9aa3a0" stroke-width="1.6" stroke-linecap="round"><path d="M86,40 q6,-8 12,0 q6,8 -2,12"/><path d="M90,22 q4,-5 8,0"/></g>
+</svg></div><div class="bubbles"><button class="bb" data-g="1" style="--ac:#a8742a;--fill:#f3e3b0;--tint:#fbf4e1" aria-expanded="false"><span class="q">同じことを、何度も考えてしまう</span><span class="pm"></span></button><button class="bb" data-g="2" style="--ac:#3d6b5c;--fill:#bfdcc6;--tint:#ebf4ed" aria-expanded="false"><span class="q">周りに合わせがち。自分で選べるようになりたい</span><span class="pm"></span></button><button class="bb" data-g="3" style="--ac:#4b6a96;--fill:#c9d3e6;--tint:#eef1f7" aria-expanded="false"><span class="q">もっと深く学びたい。教えることにも生かしたい</span><span class="pm"></span></button></div></div><div class="panels"><div class="pn" data-g="1" style="--ac:#a8742a;--fill:#f3e3b0;--tint:#fbf4e1"><p class="ph">「同じことを、何度も考えてしまう」と感じている方へ</p><div class="pos"><svg class="mini" viewBox="-2 -2 148 66" aria-hidden="true"><rect x="0" y="48" width="24" height="14" rx="2" fill="#a8742a"/><text x="12" y="59" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">1</text><rect x="26" y="39" width="24" height="23" rx="2" fill="#a8742a"/><text x="38" y="50" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">2</text><rect x="52" y="30" width="24" height="32" rx="2" fill="#dcd6ca"/><text x="64" y="41" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">3</text><rect x="94" y="21" width="24" height="41" rx="2" fill="#dcd6ca"/><text x="106" y="32" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">4</text><rect x="120" y="12" width="24" height="50" rx="2" fill="#dcd6ca"/><text x="132" y="23" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">5</text><path d="M75,30 Q85.0,16 95,21" fill="none" stroke="#a8835a" stroke-width="2.5" stroke-linecap="round"/><path d="M20.0,30 L30.0,30 L25.0,36Z" fill="#a8742a"/><text x="25.0" y="27" text-anchor="middle" font-size="9" font-weight="700" fill="#a8742a">ここ</text></svg><span>階段で言うと<br><b style="color:#a8742a">STEP1・2｜知る・気づく</b><br>にあたる学びです</span></div><p>「あの一言、帰ってからも気になる」。そんな身近な出来事を通して、自分の受け止め方を知ります。</p><p>日常を振り返りながら、考え方のクセに気づく練習をしていきます。</p><a class="tofree" href="#cta">▶ どこから始める方も、最初の一歩は無料導入講座から</a></div><div class="pn" data-g="2" style="--ac:#3d6b5c;--fill:#bfdcc6;--tint:#ebf4ed"><p class="ph">「周りに合わせがち。自分で選べるようになりたい」と感じている方へ</p><div class="pos"><svg class="mini" viewBox="-2 -2 148 66" aria-hidden="true"><rect x="0" y="48" width="24" height="14" rx="2" fill="#dcd6ca"/><text x="12" y="59" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">1</text><rect x="26" y="39" width="24" height="23" rx="2" fill="#dcd6ca"/><text x="38" y="50" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">2</text><rect x="52" y="30" width="24" height="32" rx="2" fill="#3d6b5c"/><text x="64" y="41" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">3</text><rect x="94" y="21" width="24" height="41" rx="2" fill="#3d6b5c"/><text x="106" y="32" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">4</text><rect x="120" y="12" width="24" height="50" rx="2" fill="#dcd6ca"/><text x="132" y="23" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">5</text><path d="M75,30 Q85.0,16 95,21" fill="none" stroke="#a8835a" stroke-width="2.5" stroke-linecap="round"/><path d="M80.0,12 L90.0,12 L85.0,18Z" fill="#3d6b5c"/><text x="85.0" y="9" text-anchor="middle" font-size="9" font-weight="700" fill="#3d6b5c">ここ</text></svg><span>階段で言うと<br><b style="color:#3d6b5c">STEP3・4｜わかる・できる</b><br>にあたる学びです</span></div><p>なぜ同じところでつまずくのかを、心の働きから学びます。</p><p>気持ちが動いたときに、次の行動を自分で選ぶ練習をします。講座でお渡しするChatGPT用の質問を使い、日常の出来事をご自身で振り返ります。</p><a class="tofree" href="#cta">▶ どこから始める方も、最初の一歩は無料導入講座から</a></div><div class="pn" data-g="3" style="--ac:#4b6a96;--fill:#c9d3e6;--tint:#eef1f7"><p class="ph">「もっと深く学びたい。教えることにも生かしたい」と感じている方へ</p><div class="pos"><svg class="mini" viewBox="-2 -2 148 66" aria-hidden="true"><rect x="0" y="48" width="24" height="14" rx="2" fill="#dcd6ca"/><text x="12" y="59" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">1</text><rect x="26" y="39" width="24" height="23" rx="2" fill="#dcd6ca"/><text x="38" y="50" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">2</text><rect x="52" y="30" width="24" height="32" rx="2" fill="#dcd6ca"/><text x="64" y="41" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">3</text><rect x="94" y="21" width="24" height="41" rx="2" fill="#dcd6ca"/><text x="106" y="32" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">4</text><rect x="120" y="12" width="24" height="50" rx="2" fill="#4b6a96"/><text x="132" y="23" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">5</text><path d="M75,30 Q85.0,16 95,21" fill="none" stroke="#a8835a" stroke-width="2.5" stroke-linecap="round"/><path d="M127.0,3 L137.0,3 L132.0,9Z" fill="#4b6a96"/><text x="132.0" y="0" text-anchor="middle" font-size="9" font-weight="700" fill="#4b6a96">ここ</text></svg><span>階段で言うと<br><b style="color:#4b6a96">STEP5｜深める・伝える</b><br>にあたる学びです</span></div><p>古典の教えへの理解を深め、自分の言葉でわかりやすく伝える練習をします。</p><p>学びを深めたい方や、ヨーガ・瞑想の指導に生かしたい方にも。</p><a class="tofree" href="#cta">▶ どこから始める方も、最初の一歩は無料導入講座から</a></div></div>
+<div class="ctawrap" id="cta"><p class="ctanote">60分の録画を、好きな時間に見られます</p>
+<a class="cta" href="#cta"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9l-.6 2.6c-.1.4.3.7.7.5l3.6-2.9C19.2 18.6 22 15.2 22 11c0-4.4-4.5-8-10-8z" fill="#fff"/></svg>LINEで無料講座を受け取る</a></div>
+</section></div><script>
+const bbs=[...document.querySelectorAll('.bb')],pns=[...document.querySelectorAll('.pn')],stair=document.getElementById('stair');
+function paint(g){stair.classList.toggle('focus',!!g);stair.querySelectorAll('.stp').forEach(e=>e.classList.toggle('on',e.dataset.g===g));}
+bbs.forEach(b=>b.addEventListener('click',()=>{const o=!b.classList.contains('open');
+bbs.forEach(x=>{x.classList.remove('open');x.setAttribute('aria-expanded','false')});pns.forEach(p=>p.classList.remove('open'));
+if(o){b.classList.add('open');b.setAttribute('aria-expanded','true');pns.find(p=>p.dataset.g===b.dataset.g).classList.add('open')}paint(o?b.dataset.g:null)}));
+document.querySelectorAll('.tofree').forEach(l=>l.addEventListener('click',e=>{e.preventDefault();document.getElementById('cta').scrollIntoView({behavior:'smooth',block:'center'})}));
+</script></body></html>
